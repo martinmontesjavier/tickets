@@ -1,4 +1,4 @@
-export const tickets = [
+export let tickets = [
     {
       codigo: 'T001',
       fecha: '2023-11-28',
