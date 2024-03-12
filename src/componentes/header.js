@@ -21,6 +21,12 @@ export const header = {
     </nav>
     `,
     script:()=>{
+
+        const comprobarUser = document.querySelector('#nombreUsuario')
+        if(comprobarUser.innerHTML==''){
+            document.querySelector('#panel').classList.add('d-none')
+        }
+
         document.querySelector('#panel').addEventListener('click',()=>{
             document.querySelector('main').innerHTML=vistaPanel.template
             vistaPanel.script()

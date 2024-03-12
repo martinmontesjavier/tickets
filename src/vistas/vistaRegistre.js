@@ -15,6 +15,19 @@ export const vistaRegistre = {
                         <input name="email" id="email" type="text" class="form-control" />
                         <label for="pass" class="form-label mt-3">Contraseña:</label>
                         <input name="pass" id="pass" type="password" class="form-control" />
+                        <label for="rol" class="form-label mt-3">Rol:</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="rol" id="usuario" value="usuario">
+                            <label class="form-check-label" for="usuario">Usuario</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="rol" id="profesor" value="profesor">
+                            <label class="form-check-label" for="profesor">Profesor</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="rol" id="administrador" value="administrador">
+                            <label class="form-check-label" for="administrador">Administrador</label>
+                        </div>
                         <a id="enviar" class="btn btn-primary w-100 mt-3" href="#">Enviar</a>
                     </form>
                 </div>
@@ -26,8 +39,10 @@ export const vistaRegistre = {
             const apellidosValue= document.querySelector('#apellidos').value
             const emailValue = document.querySelector('#email').value
             const passValue = document.querySelector('#pass').value
+            const rolValue = document.querySelector('input[name="rol"]:checked')?.value;
 
-            if (!nombreValue || !apellidosValue || !emailValue || !passValue) {
+
+            if (!nombreValue || !apellidosValue || !emailValue || !passValue || !rolValue) {
                 alert('Por favor, completa todos los campos obligatorios.');
                 return; 
             }
@@ -35,7 +50,9 @@ export const vistaRegistre = {
             const objeto = {
                 nombre: nombreValue,
                 email: emailValue,
-                contrasenya: passValue
+                contrasenya: passValue,
+                rol: rolValue
+                
             } 
 
             if(registroUsuarios.length === 0){

@@ -41,13 +41,17 @@ export const vistaLogin = {
             const correoElectronico = document.querySelector('#email').value
             const contrasenya = document.querySelector('#pass').value
 
+
+
             objetoJson.forEach(element => {
                 if(correoElectronico == element.email){
                     if(contrasenya == element.contrasenya){
                         alert('Has iniciado sesion correctamente')
                         document.querySelector('#nombreUsuario').innerHTML=correoElectronico
+                        document.querySelector('#nombreUsuario').dataset.rol=element.rol
                         document.querySelector('#nombreUsuario').classList.replace('d-none', 'd-inline-block'); 
                         document.querySelector('#cerrarSesion').classList.replace('d-none', 'd-inline-block'); 
+                        document.querySelector('#panel').classList.remove('d-none')
                         document.querySelector('main').innerHTML=vistaPanel.template
                         vistaPanel.script()
                     }else{
