@@ -176,7 +176,7 @@ export const vistaPanel = {
                   <td>${element.alumno}</td>
                   <td>${element.estado}</td>
                   <!--<td><button class="btn btn-success resolver ${element.codigo}" title="Resolver ticket">Resolver</button></td>-->
-                  <td><button class="d-none btn btn-dark editarTicket ${element.codigo}" title="Editar Ticket">✏️<i class="bi  bi-pencil text-light" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                  <td><button class="btn btn-dark editarTicket ${element.codigo}" title="Editar Ticket">✏️<i class="bi  bi-pencil text-light" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
                   </button></td>
                   <td><button class="btn btn-warning anyadirComentario ${element.codigo}" title="Añadir comentario">✏️<i class="bi  bi-pencil"></i>
                   </button>
@@ -242,27 +242,6 @@ export const vistaPanel = {
           })
           pintarTablas()
         }
-        // if(e.target.classList.contains('eliminarTicket')){
-        //   vistaPanel.idTicket = e.target.classList[e.target.classList.length-1]
-        //   tickets.forEach(element =>{
-        //     if(element.codigo == e.target.classList[e.target.classList.length-1]){
-        //       let codigoTicket = e.target.classList[e.target.classList.length - 1];
-
-        //       // Crear una copia de la base de datos original
-        //       vistaPanel.bdRepuesto = tickets.slice();
-              
-        //       // Filtrar los tickets excluyendo el que se quiere eliminar
-        //       let nuevosTickets = tickets.filter((item) => item.codigo != codigoTicket);
-        //       console.log(nuevosTickets)
-        //       console.log(tickets)
-        //       // Asignar los nuevos tickets a la base de datos
-        //       // tickets = nuevosTickets;
-        //       pintarTablas()
-        //     }
-            
-        //   })
-          
-        // }
 
         document.querySelectorAll('.eliminarTicket').forEach((elemento) => {
           elemento.addEventListener('click', (e) => {
@@ -303,7 +282,7 @@ export const vistaPanel = {
 
         // MODAL
         if(e.target.classList.contains('editarTicket')){
-          let id = e.target.classList[e.target.classList.length-1]
+          vistaPanel.idTicket = e.target.classList[e.target.classList.length-1]
           let modal = document.querySelector('#exampleModal')
           modal.classList.add('show')
           modal.style.display='block'
@@ -311,7 +290,7 @@ export const vistaPanel = {
           document.querySelector('#btnEditarTicket').addEventListener('click',()=>{
             event.preventDefault()
             tickets.forEach(ticket => {
-              if(ticket.codigo == id){
+              if(ticket.codigo == vistaPanel.idTicket){
                 ticket.codigo = document.querySelector('#codigoEditar').value,
                 ticket.fecha = document.querySelector('#fechaEditar').value.slice(0, 10),
                 ticket.aula = document.querySelector('#aulaEditar').value,
@@ -332,6 +311,8 @@ export const vistaPanel = {
           let modal = document.querySelector('#exampleModal')
           modal.classList.add('show')
           modal.style.display='none'
+          
+
         }
       
       })
