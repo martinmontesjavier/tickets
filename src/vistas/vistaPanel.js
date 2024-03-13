@@ -149,7 +149,7 @@ export const vistaPanel = {
                       <td>${element.descripcion}</td>
                       <td>${element.alumno}</td>
                       <td>${element.estado}</td>
-                      <td><button class="btn btn-success resolver ${element.codigo}" title="Resolver ticket">Resolver</button></td>
+                      <td><button class="d-none btn btn-success resolver ${element.codigo}" title="Resolver ticket">Resolver</button></td>
                       <td><button class="btn btn-dark editarTicket ${element.codigo}" title="Editar Ticket">✏️<i class="bi  bi-pencil text-light" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></button></td>
                       <td><button class="btn btn-warning anyadirComentario ${element.codigo}" title="Añadir comentario">✏️<i class="bi  bi-pencil" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
                       </button>
@@ -176,7 +176,7 @@ export const vistaPanel = {
                   <td>${element.alumno}</td>
                   <td>${element.estado}</td>
                   <!--<td><button class="btn btn-success resolver ${element.codigo}" title="Resolver ticket">Resolver</button></td>-->
-                  <td><button class="btn btn-dark editarTicket ${element.codigo}" title="Editar Ticket">✏️<i class="bi  bi-pencil text-light" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                  <td><button class="d-none btn btn-dark editarTicket ${element.codigo}" title="Editar Ticket">✏️<i class="bi  bi-pencil text-light" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
                   </button></td>
                   <td><button class="btn btn-warning anyadirComentario ${element.codigo}" title="Añadir comentario">✏️<i class="bi  bi-pencil"></i>
                   </button>
@@ -203,6 +203,11 @@ export const vistaPanel = {
         botonesResolver.forEach(boton => {
           boton.classList.add('d-none')
         });
+
+        let botonesEditar = document.querySelectorAll('.editarTicket')
+        botonesEditar.forEach(boton => {
+          boton.classList.add('d-none')
+        });
       }
 
       if(vistaPanel.rol == 'usuario'){
@@ -214,6 +219,11 @@ export const vistaPanel = {
 
         let botonesResolver = document.querySelectorAll('.resolver')
         botonesResolver.forEach(boton => {
+          boton.classList.add('d-none')
+        });
+        
+        let botonesEditar = document.querySelectorAll('.editarTicket')
+        botonesEditar.forEach(boton => {
           boton.classList.add('d-none')
         });
       }
